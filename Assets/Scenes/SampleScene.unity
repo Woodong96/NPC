@@ -792,7 +792,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &700483057
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1176,6 +1176,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TalkText: {fileID: 804901354}
   scanObject: {fileID: 0}
+  talkPanel: {fileID: 700483056}
+  isAction: 0
 --- !u!4 &1580581877
 Transform:
   m_ObjectHideFlags: 0

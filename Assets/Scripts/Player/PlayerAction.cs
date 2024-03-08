@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAction : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PlayerAction : MonoBehaviour
     Vector3 dirVec;
     bool isHorizonMove;
     GameObject scanObject;
+    public GameObject TalkBtn;
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -78,10 +80,15 @@ public class PlayerAction : MonoBehaviour
             if (other.gameObject.layer == LayerMask.NameToLayer("Object"))
             {
                 scanObject = other.gameObject;
+                TalkBtn.SetActive(true);
             }
         }
         else
+        {
             scanObject = null;
+            TalkBtn = null;
+        }
+            
     }
 
 
@@ -93,10 +100,15 @@ public class PlayerAction : MonoBehaviour
             if (other.gameObject.layer == LayerMask.NameToLayer("Object"))
             {
                 scanObject = null;
+                TalkBtn.SetActive(false);
             }
         }
         else
+        {
+            TalkBtn = null;
             scanObject = null;
+        }
+            
     }
 
 

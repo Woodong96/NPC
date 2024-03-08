@@ -5,36 +5,34 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public TalkManager talkManager;
+    public QuestManager questManager;
+    public GameObject talkPanel;
+    public Image portraitImg;
     public Text talkText;
     public GameObject scanObject;
-    public GameObject talkPanel;
+    public int talkIndex;
     public bool isAction;
 
-    public TalkManager talkManager;
-    public int talkIndex;
-    public Image portraitImg;
     public void Action(GameObject _scanobj)
     {
+        scanObject = _scanobj;
+        Objdata objData = scanObject.GetComponent<Objdata>();
+        Talk(objData.id, objData.isNpc);
        
-
-            scanObject = _scanobj;
-            Objdata objData = scanObject.GetComponent<Objdata>();
-            Talk(objData.id, objData.isNpc);
-       
-        talkPanel.SetActive(isAction);//판넬의 값은 isAction과 동일하기 때문
-        
+        talkPanel.SetActive(isAction);
     }
-
 
     void Talk(int id, bool isNpc)
     {
-        string talkData = talkManager.GetTalk(id, talkIndex);
+        int questTalkIndex = questManager.GetQuestTalkIndex(id);
+        string talkData = talkManager.GetTalk(id + questTalkIndex, talkIndex);
 
         if (talkData == null)
         {
             isAction = false;
             talkIndex = 0;
-           
+            Debug.Log(questManager.CheckQuest(id));
             return;
         }
         if (isNpc)

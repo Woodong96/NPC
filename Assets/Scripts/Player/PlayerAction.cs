@@ -25,7 +25,6 @@ public class PlayerAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //간단한 이동식
         h = gameManager.isAction ? 0 : Input.GetAxisRaw("Horizontal");  //액션상태에 따라 움직이지 못하게
         v = gameManager.isAction ? 0 : Input.GetAxisRaw("Vertical");
@@ -40,8 +39,6 @@ public class PlayerAction : MonoBehaviour
         else if (vDown || hUp)
             isHorizonMove = false;
      
-
-
         //보는 방향 설정
         if (vDown && v == 1)
             dirVec = Vector3.up;
@@ -55,11 +52,6 @@ public class PlayerAction : MonoBehaviour
         //scanObject
         if (Input.GetButtonDown("Jump") && scanObject != null)
             gameManager.Action(scanObject);
-
-
-
-
-
     }
 
     void FixedUpdate()
@@ -67,8 +59,6 @@ public class PlayerAction : MonoBehaviour
         //수평이동
         Vector2 moveVec = isHorizonMove ? new Vector2(h, 0) : new Vector2(0, v);
         rigid.velocity = moveVec * speed;
-
-       
     }
 
     /// Istrigger가 켜져있는 콜라이더가 겹치는 곳의 npc 정보를 가져옴
@@ -91,7 +81,6 @@ public class PlayerAction : MonoBehaviour
             
     }
 
-
     /// 아래 부분이 없으면 NPC와 떨어지더라도 가장 최근 접촉한 NPC와 계속 대화함
     private void OnTriggerExit2D(Collider2D _other)
     {
@@ -108,10 +97,8 @@ public class PlayerAction : MonoBehaviour
             talkBtn = null;
             scanObject = null;
         }
-            
+       
     }
-
-
 }
 
 

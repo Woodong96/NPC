@@ -17,10 +17,16 @@ public class TalkManager : MonoBehaviour
 
     void GenerateData()
     {
-        talkData.Add(1001, new string[] { "안녕 ? :0", "난 NPC1이야 :0" });
-        talkData.Add(1002, new string[] { "안녕:0", "잘부탁해:0" });
-        talkData.Add(1003, new string[] { "난 NPC3란다:0" });
-        talkData.Add(1004, new string[] { "하이:0", "난 npc4야:0" });
+        talkData.Add(1001, new string[] { "안녕 ? :0", "난 NPC1이야 :1" });
+        talkData.Add(1002, new string[] { "안녕:0", "잘부탁해:1" });
+        talkData.Add(1003, new string[] { "난 NPC3란다:1" });
+        talkData.Add(1004, new string[] { "하이:0", "난 npc4야:1" });
+
+        //Quest Talk
+        talkData.Add(10 + 1001, new string[] { "안녕?:0", "반가워:1", "NPC2을도와주자:0"});
+        talkData.Add(11 + 1002, new string[] { "내부탁좀들어줘.:0","내가발을찾아줘:   1" });
+        talkData.Add(20 + 3001, new string[] { "근처에서 가발을 찾았다." });
+        talkData.Add(21 + 1002, new string[] { "엇, 찾아줘서 고마워:2" });
 
         portraitData.Add(1001, portraitArr[0]);
         portraitData.Add(1002, portraitArr[1]);

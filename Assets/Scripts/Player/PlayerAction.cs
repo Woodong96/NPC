@@ -66,20 +66,36 @@ public class PlayerAction : MonoBehaviour
         Vector2 moveVec = isHorizonMove ? new Vector2(h, 0) : new Vector2(0, v);
         rigid.velocity = moveVec * Speed;
 
+       
+    }
 
-        //보는 방향+ 거리확인
-        Debug.DrawRay(rigid.position, dirVec * 1.7f, new Color(0, 1, 0));
+    private void OnTriggerEnter2D(Collider2D other)
+    {
 
-        //대화걸기
-        RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, dirVec, 1.7f, LayerMask.GetMask("Object"));
-
-        if (rayHit.collider != null)
+        if (other != null)
         {
-            scanObject = rayHit.collider.gameObject;
+            if (other.gameObject.layer == LayerMask.NameToLayer("Object"))
+            {
+                scanObject = other.gameObject;
+            }
         }
         else
             scanObject = null;
     }
+
+
 }
 
 
+////보는 방향+ 거리확인
+//Debug.DrawRay(rigid.position, dirVec * 1.7f, new Color(0, 1, 0));
+
+////대화걸기
+//RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, dirVec, 1.7f, LayerMask.GetMask("Object"));
+
+//if (rayHit.collider != null)
+//{
+//    scanObject = rayHit.collider.gameObject;
+//}
+//else
+//    scanObject = null;

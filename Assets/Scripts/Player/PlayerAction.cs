@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerAction : MonoBehaviour
 {
-    public float Speed;
+    public float speed;
 
 
     Rigidbody2D rigid;
@@ -16,7 +16,7 @@ public class PlayerAction : MonoBehaviour
     Vector3 dirVec;
     bool isHorizonMove;
     GameObject scanObject;
-    public GameObject TalkBtn;
+    public GameObject talkBtn;
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -66,46 +66,46 @@ public class PlayerAction : MonoBehaviour
     {
         //수평이동
         Vector2 moveVec = isHorizonMove ? new Vector2(h, 0) : new Vector2(0, v);
-        rigid.velocity = moveVec * Speed;
+        rigid.velocity = moveVec * speed;
 
        
     }
 
     /// Istrigger가 켜져있는 콜라이더가 겹치는 곳의 npc 정보를 가져옴
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D _other)
     {
 
-        if (other != null)
+        if (_other != null)
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Object"))
+            if (_other.gameObject.layer == LayerMask.NameToLayer("Object"))
             {
-                scanObject = other.gameObject;
-                TalkBtn.SetActive(true);
+                scanObject = _other.gameObject;
+                talkBtn.SetActive(true);
             }
         }
         else
         {
             scanObject = null;
-            TalkBtn = null;
+            talkBtn = null;
         }
             
     }
 
 
     /// 아래 부분이 없으면 NPC와 떨어지더라도 가장 최근 접촉한 NPC와 계속 대화함
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D _other)
     {
-        if (other != null)
+        if (_other != null)
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Object"))
+            if (_other.gameObject.layer == LayerMask.NameToLayer("Object"))
             {
                 scanObject = null;
-                TalkBtn.SetActive(false);
+                talkBtn.SetActive(false);
             }
         }
         else
         {
-            TalkBtn = null;
+            talkBtn = null;
             scanObject = null;
         }
             

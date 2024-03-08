@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public Text TalkText;
+    public Text talkText;
     public GameObject scanObject;
     public GameObject talkPanel;
     public bool isAction;
@@ -13,12 +13,12 @@ public class GameManager : MonoBehaviour
     public TalkManager talkManager;
     public int talkIndex;
     public Image portraitImg;
-    public void Action(GameObject scanObj)
+    public void Action(GameObject _scanobj)
     {
        
 
-            scanObject = scanObj;
-            ObjData objData = scanObject.GetComponent<ObjData>();
+            scanObject = _scanobj;
+            Objdata objData = scanObject.GetComponent<Objdata>();
             Talk(objData.id, objData.isNpc);
        
         talkPanel.SetActive(isAction);//판넬의 값은 isAction과 동일하기 때문
@@ -39,14 +39,14 @@ public class GameManager : MonoBehaviour
         }
         if (isNpc)
         {
-            TalkText.text = talkData.Split(':')[0];
+            talkText.text = talkData.Split(':')[0];
 
             portraitImg.sprite = talkManager.GetPortrait(id, int.Parse( talkData.Split(':')[1]));
             portraitImg.color = new Color(1, 1, 1, 1);
         }
         else
         {
-            TalkText.text = talkData;
+            talkText.text = talkData;
 
             portraitImg.color = new Color(1, 1, 1, 0);
         }

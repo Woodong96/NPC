@@ -29,16 +29,16 @@ public class TalkManager : MonoBehaviour
 
         // 실전에선 여러가지 표정을 넣을수 있도록 하기위해 NPC 번호를 NCP 1명당 100~1000씩 할당하면 좋을듯함
     }
-    public string GetTalk(int id, int talkIndex)
+    public string GetTalk(int _id, int _talkIndex)
     {
-        if (talkIndex == talkData[id].Length)
+        if (_talkIndex == talkData[_id].Length)
             return null;
         else
-            return talkData[id][talkIndex];
+            return talkData[_id][_talkIndex];
     }
-    public Sprite GetPortrait(int id, int portraitIndex)
+    public Sprite GetPortrait(int _id, int portraitIndex)
     {
         //return portraitData[id + portraitIndex];
-        return portraitData[id];
+        return portraitData[_id];
     }
 }

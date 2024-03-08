@@ -43,8 +43,8 @@ public class PlayerAction : MonoBehaviour
         //보는 방향 설정
         if (vDown && v == 1)
             dirVec = Vector3.up;
-        else if (vDown && v == -1)
-            dirVec = Vector3.down;
+        //else if (vDown && v == -1)
+        //    dirVec = Vector3.down;
         else if (hDown && h == -1)
             dirVec = Vector3.left;
          else if (hDown && h == 1)
@@ -68,7 +68,7 @@ public class PlayerAction : MonoBehaviour
 
 
         //보는 방향+ 거리확인
-        Debug.DrawRay(rigid.position, dirVec * 2.7f, new Color(0, 1, 0));
+        Debug.DrawRay(rigid.position, dirVec * 1.7f, new Color(0, 1, 0));
 
         //대화걸기
         RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, dirVec, 1.7f, LayerMask.GetMask("Object"));
@@ -81,3 +81,5 @@ public class PlayerAction : MonoBehaviour
             scanObject = null;
     }
 }
+
+

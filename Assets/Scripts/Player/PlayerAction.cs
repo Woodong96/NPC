@@ -69,6 +69,7 @@ public class PlayerAction : MonoBehaviour
        
     }
 
+    /// Istrigger가 켜져있는 콜라이더가 겹치는 곳의 npc 정보를 가져옴
     private void OnTriggerEnter2D(Collider2D other)
     {
 
@@ -77,6 +78,21 @@ public class PlayerAction : MonoBehaviour
             if (other.gameObject.layer == LayerMask.NameToLayer("Object"))
             {
                 scanObject = other.gameObject;
+            }
+        }
+        else
+            scanObject = null;
+    }
+
+
+    /// 아래 부분이 없으면 NPC와 떨어지더라도 가장 최근 접촉한 NPC와 계속 대화함
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other != null)
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Object"))
+            {
+                scanObject = null;
             }
         }
         else
